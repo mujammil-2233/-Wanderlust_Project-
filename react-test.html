@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust - React Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        #app-root {
+            min-height: 100vh;
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div id="app-root">
+        <h1 style="text-align: center; padding: 50px; color: red;">Loading React App...</h1>
+    </div>
+    <script src="/js/app-bundle.js"></script>
+    <script>
+        console.log('Page loaded, calling renderApp...');
+        try {
+            if (typeof window.renderApp === 'function') {
+                window.renderApp();
+                console.log('renderApp called successfully');
+            } else {
+                console.error('window.renderApp is not defined');
+                document.getElementById('app-root').innerHTML = '<h1 style="color: red; text-align: center; padding: 50px;">Error: renderApp function not found</h1>';
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            document.getElementById('app-root').innerHTML = '<h1 style="color: red; text-align: center; padding: 50px;">Error: ' + error.message + '</h1>';
+        }
+    </script>
+</body>
+</html>
